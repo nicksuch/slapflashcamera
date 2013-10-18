@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *fakeFlashIndicator;
+- (IBAction)makeItFlash:(id)sender;
+- (IBAction)fakeFlashIndicatorOff:(id)sender;
+- (IBAction)makeItFlashOffOutside:(id)sender;
+
 
 @end
