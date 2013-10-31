@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0547F901822A74C008F5160 /* camera_back_original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0547F8F1822A74C008F5160 /* camera_back_original.jpg */; };
+		B0547F931822AD6D008F5160 /* SlapFlashCamera-sounds.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B0547F921822AD6D008F5160 /* SlapFlashCamera-sounds.m4a */; };
 		B056C3D118114C8D00F7E96D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B056C3D018114C8D00F7E96D /* Foundation.framework */; };
 		B056C3D318114C8D00F7E96D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B056C3D218114C8D00F7E96D /* CoreGraphics.framework */; };
 		B056C3D518114C8D00F7E96D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B056C3D418114C8D00F7E96D /* UIKit.framework */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B0547F8F1822A74C008F5160 /* camera_back_original.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = camera_back_original.jpg; sourceTree = "<group>"; };
+		B0547F921822AD6D008F5160 /* SlapFlashCamera-sounds.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SlapFlashCamera-sounds.m4a"; sourceTree = "<group>"; };
 		B056C3CD18114C8D00F7E96D /* SlapFlashCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlapFlashCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B056C3D018114C8D00F7E96D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B056C3D218114C8D00F7E96D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,6 +86,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0547F8E1822A74C008F5160 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B0547F8F1822A74C008F5160 /* camera_back_original.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		B0547F911822AD6D008F5160 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B0547F921822AD6D008F5160 /* SlapFlashCamera-sounds.m4a */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
 		B056C3C418114C8D00F7E96D = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +136,8 @@
 		B056C3D618114C8D00F7E96D /* SlapFlashCamera */ = {
 			isa = PBXGroup;
 			children = (
+				B0547F911822AD6D008F5160 /* sounds */,
+				B0547F8E1822A74C008F5160 /* images */,
 				B056C3DF18114C8D00F7E96D /* AppDelegate.h */,
 				B056C3E018114C8D00F7E96D /* AppDelegate.m */,
 				B056C3E218114C8D00F7E96D /* Main.storyboard */,
@@ -235,7 +257,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0547F901822A74C008F5160 /* camera_back_original.jpg in Resources */,
 				B056C3E918114C8D00F7E96D /* Images.xcassets in Resources */,
+				B0547F931822AD6D008F5160 /* SlapFlashCamera-sounds.m4a in Resources */,
 				B056C3DB18114C8D00F7E96D /* InfoPlist.strings in Resources */,
 				B056C3E418114C8D00F7E96D /* Main.storyboard in Resources */,
 			);
@@ -473,6 +497,7 @@
 				B056C40118114C8E00F7E96D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B056C40218114C8E00F7E96D /* Build configuration list for PBXNativeTarget "SlapFlashCameraTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +506,7 @@
 				B056C40418114C8E00F7E96D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
