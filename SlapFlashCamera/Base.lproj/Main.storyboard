@@ -90,6 +90,9 @@
                                         <state key="normal" title="[                   ]">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="snapStillImage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="X7s-eb-7kK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,6 +107,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="fakeFlashIndicator" destination="vcP-UH-hJ7" id="2BN-iR-8XR"/>
+                        <outlet property="previewView" destination="ZZM-yM-ias" id="aue-W9-I02"/>
+                        <outlet property="stillButton" destination="4bC-1Z-Xj8" id="LyG-Se-bzR"/>
                         <outlet property="viewfinderImageView" destination="nk8-MW-oVb" id="0oy-ep-MyB"/>
                     </connections>
                 </viewController>
