@@ -25,6 +25,9 @@
 		B056C3FC18114C8E00F7E96D /* SlapFlashCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B056C3FB18114C8E00F7E96D /* SlapFlashCameraTests.m */; };
 		B056C40618114F0400F7E96D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B056C40518114F0400F7E96D /* AVFoundation.framework */; };
 		B0B0436D18B1AEC400153765 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0436C18B1AEC400153765 /* AVCamPreviewView.m */; };
+		B0DB3A2A18B270EF00739B06 /* flashCharge.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B0DB3A2718B270EF00739B06 /* flashCharge.aiff */; };
+		B0DB3A2B18B270EF00739B06 /* shutterRelease.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B0DB3A2818B270EF00739B06 /* shutterRelease.aiff */; };
+		B0DB3A2C18B270EF00739B06 /* wind.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B0DB3A2918B270EF00739B06 /* wind.aiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,9 @@
 		B056C40518114F0400F7E96D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B0B0436B18B1AEC400153765 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
 		B0B0436C18B1AEC400153765 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
+		B0DB3A2718B270EF00739B06 /* flashCharge.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = flashCharge.aiff; sourceTree = "<group>"; };
+		B0DB3A2818B270EF00739B06 /* shutterRelease.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = shutterRelease.aiff; sourceTree = "<group>"; };
+		B0DB3A2918B270EF00739B06 /* wind.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = wind.aiff; path = SlapFlashCamera/sounds/wind.aiff; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,9 @@
 		B0547F911822AD6D008F5160 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				B0DB3A2718B270EF00739B06 /* flashCharge.aiff */,
+				B0DB3A2818B270EF00739B06 /* shutterRelease.aiff */,
+				B0DB3A2918B270EF00739B06 /* wind.aiff */,
 				B0547F921822AD6D008F5160 /* SlapFlashCamera-sounds.m4a */,
 			);
 			path = sounds;
@@ -264,9 +273,12 @@
 			files = (
 				B0547F901822A74C008F5160 /* camera_back_original.jpg in Resources */,
 				B056C3E918114C8D00F7E96D /* Images.xcassets in Resources */,
+				B0DB3A2A18B270EF00739B06 /* flashCharge.aiff in Resources */,
 				B0547F931822AD6D008F5160 /* SlapFlashCamera-sounds.m4a in Resources */,
 				B056C3DB18114C8D00F7E96D /* InfoPlist.strings in Resources */,
 				B056C3E418114C8D00F7E96D /* Main.storyboard in Resources */,
+				B0DB3A2B18B270EF00739B06 /* shutterRelease.aiff in Resources */,
+				B0DB3A2C18B270EF00739B06 /* wind.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

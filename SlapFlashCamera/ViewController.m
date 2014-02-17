@@ -12,10 +12,14 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "AVCamPreviewView.h"
 
+#include <AudioToolbox/AudioToolbox.h>
+#include <CoreFoundation/CoreFoundation.h>
+
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 static void * RecordingContext = &RecordingContext;
 static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDeviceAuthorizedContext;
 
+// To check if the film winder is wound
 BOOL isWound;
 
 @interface ViewController () <AVCaptureFileOutputRecordingDelegate>
@@ -151,6 +155,16 @@ if (self.picker == nil) {
 - (IBAction)windCamera:(id)sender {
     isWound = YES;
     self.isWoundLabel.text = @"yes!";
+
+    // Set up the pieces needed to play a sound.
+    SystemSoundID  windSound;
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"wind" ofType:@"aiff"];
+    AudioServicesCreateSystemSoundID((CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:soundPath]), &windSound);
+    
+    NSLog(@"%@", soundPath);
+    
+    // Play the sound file.
+    AudioServicesPlaySystemSound (windSound);
     
 }
 
@@ -214,29 +228,29 @@ if (self.picker == nil) {
 				[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] setVideoOrientation:(AVCaptureVideoOrientation)[self interfaceOrientation]];
 			});
 		}
-		
-		AVCaptureDevice *audioDevice = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio] firstObject];
-		AVCaptureDeviceInput *audioDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
-		
-		if (error)
-		{
-			NSLog(@"%@", error);
-		}
-		
-		if ([session canAddInput:audioDeviceInput])
-		{
-			[session addInput:audioDeviceInput];
-		}
-		
-		AVCaptureMovieFileOutput *movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
-		if ([session canAddOutput:movieFileOutput])
-		{
-			[session addOutput:movieFileOutput];
-			AVCaptureConnection *connection = [movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
-			if ([connection isVideoStabilizationSupported])
-				[connection setEnablesVideoStabilizationWhenAvailable:YES];
-			[self setMovieFileOutput:movieFileOutput];
-		}
+//Disabled this so that Audio Files will play
+//		AVCaptureDevice *audioDevice = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio] firstObject];
+//		AVCaptureDeviceInput *audioDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
+//		
+//		if (error)
+//		{
+//			NSLog(@"%@", error);
+//		}
+//		
+//		if ([session canAddInput:audioDeviceInput])
+//		{
+//			[session addInput:audioDeviceInput];
+//		}
+//		
+//		AVCaptureMovieFileOutput *movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
+//		if ([session canAddOutput:movieFileOutput])
+//		{
+//			[session addOutput:movieFileOutput];
+//			AVCaptureConnection *connection = [movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+//			if ([connection isVideoStabilizationSupported])
+//				[connection setEnablesVideoStabilizationWhenAvailable:YES];
+//			[self setMovieFileOutput:movieFileOutput];
+//		}
 		
 		AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
 		if ([session canAddOutput:stillImageOutput])
@@ -246,6 +260,7 @@ if (self.picker == nil) {
 			[self setStillImageOutput:stillImageOutput];
 		}
 	});
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -472,6 +487,7 @@ if (self.picker == nil) {
         });
         isWound = NO;
         self.isWoundLabel.text = @"no";
+        //TODO: Play custom shutter sound
     }
 }
 
