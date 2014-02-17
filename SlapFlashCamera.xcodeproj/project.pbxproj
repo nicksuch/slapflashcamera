@@ -24,6 +24,7 @@
 		B056C3FA18114C8E00F7E96D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B056C3F818114C8E00F7E96D /* InfoPlist.strings */; };
 		B056C3FC18114C8E00F7E96D /* SlapFlashCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B056C3FB18114C8E00F7E96D /* SlapFlashCameraTests.m */; };
 		B056C40618114F0400F7E96D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B056C40518114F0400F7E96D /* AVFoundation.framework */; };
+		B0B0436D18B1AEC400153765 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0436C18B1AEC400153765 /* AVCamPreviewView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		B056C3F918114C8E00F7E96D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B056C3FB18114C8E00F7E96D /* SlapFlashCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlapFlashCameraTests.m; sourceTree = "<group>"; };
 		B056C40518114F0400F7E96D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B0B0436B18B1AEC400153765 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
+		B0B0436C18B1AEC400153765 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +139,8 @@
 		B056C3D618114C8D00F7E96D /* SlapFlashCamera */ = {
 			isa = PBXGroup;
 			children = (
+				B0B0436B18B1AEC400153765 /* AVCamPreviewView.h */,
+				B0B0436C18B1AEC400153765 /* AVCamPreviewView.m */,
 				B0547F911822AD6D008F5160 /* sounds */,
 				B0547F8E1822A74C008F5160 /* images */,
 				B056C3DF18114C8D00F7E96D /* AppDelegate.h */,
@@ -282,6 +287,7 @@
 			files = (
 				B056C3E718114C8D00F7E96D /* ViewController.m in Sources */,
 				B056C3E118114C8D00F7E96D /* AppDelegate.m in Sources */,
+				B0B0436D18B1AEC400153765 /* AVCamPreviewView.m in Sources */,
 				B056C3DD18114C8D00F7E96D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
