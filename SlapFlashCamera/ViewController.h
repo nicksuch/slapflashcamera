@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) UIImagePickerController *picker;
 @property (weak, nonatomic) IBOutlet UILabel *fakeFlashIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *viewfinderImageView;
 - (IBAction)makeItFlash:(id)sender;
 - (IBAction)fakeFlashIndicatorOff:(id)sender;
 - (IBAction)makeItFlashOffOutside:(id)sender;
+- (IBAction)shutterPressed:(id)sender;
 
 
 @end
