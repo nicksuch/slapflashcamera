@@ -110,19 +110,35 @@ if (self.picker == nil) {
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    if (motion == UIEventSubtypeMotionShake)
+    if (motion == UIEventSubtypeMotionShake && self.fakeFlashIndicator.backgroundColor == [UIColor whiteColor])
     {
         // User was shaking the device. Post a notification named "shake."
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shake" object:self];
         self.fakeFlashIndicator.backgroundColor = [UIColor blackColor];
         
         AVCaptureDevice *backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        if ( [backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn]  )
+        if ( [backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn])
         {
             BOOL success = [backCamera lockForConfiguration:nil];
             if ( success )
             {
                 [backCamera setTorchMode:AVCaptureTorchModeOn];
+                [backCamera unlockForConfiguration];
+            }
+        }
+    } else if (motion == UIEventSubtypeMotionShake && self.fakeFlashIndicator.backgroundColor == [UIColor blackColor])
+    {
+        // User was shaking the device. Post a notification named "shake."
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shake" object:self];
+        self.fakeFlashIndicator.backgroundColor = [UIColor whiteColor];
+        
+        AVCaptureDevice *backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        if ( [backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn])
+        {
+            BOOL success = [backCamera lockForConfiguration:nil];
+            if ( success )
+            {
+                [backCamera setTorchMode:AVCaptureTorchModeOff];
                 [backCamera unlockForConfiguration];
             }
         }
