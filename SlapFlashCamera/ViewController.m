@@ -16,6 +16,8 @@ static void * CapturingStillImageContext = &CapturingStillImageContext;
 static void * RecordingContext = &RecordingContext;
 static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDeviceAuthorizedContext;
 
+BOOL isWound;
+
 @interface ViewController () <AVCaptureFileOutputRecordingDelegate>
 
 // For use in the storyboards.
@@ -144,6 +146,14 @@ if (self.picker == nil) {
         }
     }
 }
+
+// Wind film on camera. Shutter should not release unless film isWound
+- (IBAction)windCamera:(id)sender {
+    isWound = YES;
+    self.isWoundLabel.text = @"yes!";
+    
+}
+
 
 // New stuff from AVCam
 
@@ -440,24 +450,29 @@ if (self.picker == nil) {
 
 - (IBAction)snapStillImage:(id)sender
 {
-	dispatch_async([self sessionQueue], ^{
-		// Update the orientation on the still image output video connection before capturing.
-		[[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
-		
-		// Flash set to Auto for Still Capture
-		[ViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
-		
-		// Capture a still image.
-		[[self stillImageOutput] captureStillImageAsynchronouslyFromConnection:[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-			
-			if (imageDataSampleBuffer)
-			{
-				NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-				UIImage *image = [[UIImage alloc] initWithData:imageData];
-				[[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
-			}
-		}];
-	});
+	if (isWound == YES) {
+        dispatch_async([self sessionQueue], ^{
+            // Update the orientation on the still image output video connection before capturing.
+            [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
+            
+            //TODO: this needs to be changeable by user with FlashReadyIndicator
+            // Flash set to Auto for Still Capture
+            [ViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
+            
+            // Capture a still image.
+            [[self stillImageOutput] captureStillImageAsynchronouslyFromConnection:[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+                
+                if (imageDataSampleBuffer)
+                {
+                    NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+                    UIImage *image = [[UIImage alloc] initWithData:imageData];
+                    [[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
+                }
+            }];
+        });
+        isWound = NO;
+        self.isWoundLabel.text = @"no";
+    }
 }
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer
