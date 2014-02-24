@@ -54,8 +54,6 @@ BOOL isWound;
 
 @implementation ViewController
 
-@synthesize picker = _picker;
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -92,27 +90,6 @@ BOOL isWound;
 
 - (IBAction)makeItFlashOffOutside:(id)sender {
     self.fakeFlashIndicator.backgroundColor = [UIColor whiteColor];
-}
-
-- (IBAction)shutterPressed:(id)sender {
-    // Old code, executed on Main Thread. Moved this to background thread.
-if (self.picker == nil) {
-     self.picker = [[UIImagePickerController alloc] init];
-     self.picker.delegate = self;
-     self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-     self.picker.allowsEditing = NO;
-     }
-    [self.navigationController presentModalViewController:_picker animated:YES];
-}
-
-#pragma mark UIImagePickerControlDelegate
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    [self dismissModalViewControllerAnimated:YES];
-    UIImage *fullImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-     self.viewfinderImageView.image = fullImage;
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
