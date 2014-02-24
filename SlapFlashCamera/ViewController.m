@@ -153,18 +153,20 @@ if (self.picker == nil) {
 
 // Wind film on camera. Shutter should not release unless film isWound
 - (IBAction)windCamera:(id)sender {
-    isWound = YES;
-    self.isWoundLabel.text = @"yes!";
+    if (!isWound) {
+        isWound = YES;
+        self.isWoundLabel.text = @"yes!";
 
-    // Set up the pieces needed to play a sound.
-    SystemSoundID  windSound;
-    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"wind" ofType:@"aiff"];
-    AudioServicesCreateSystemSoundID((CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:soundPath]), &windSound);
-    
-    NSLog(@"%@", soundPath);
-    
-    // Play the sound file.
-    AudioServicesPlaySystemSound (windSound);
+        // Set up the pieces needed to play a sound.
+        SystemSoundID  windSound;
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"wind" ofType:@"aiff"];
+        AudioServicesCreateSystemSoundID((CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:soundPath]), &windSound);
+        
+        NSLog(@"%@", soundPath);
+        
+        // Play the sound file.
+        AudioServicesPlaySystemSound (windSound);
+        }
     
 }
 
