@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02CA74B18BADB8F0078C2F9 /* exposures_remaining@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B02CA74518BADB8F0078C2F9 /* exposures_remaining@2x.png */; };
+		B02CA74C18BADB8F0078C2F9 /* film_winder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B02CA74618BADB8F0078C2F9 /* film_winder@2x.png */; };
+		B02CA74D18BADB8F0078C2F9 /* flash_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B02CA74718BADB8F0078C2F9 /* flash_button@2x.png */; };
+		B02CA74E18BADB8F0078C2F9 /* flash_charged@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B02CA74818BADB8F0078C2F9 /* flash_charged@2x.png */; };
+		B02CA74F18BADB8F0078C2F9 /* flash_uncharged@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B02CA74918BADB8F0078C2F9 /* flash_uncharged@2x.png */; };
+		B02CA75018BADB8F0078C2F9 /* shutter_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B02CA74A18BADB8F0078C2F9 /* shutter_button@2x.png */; };
 		B0547F901822A74C008F5160 /* camera_back_original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0547F8F1822A74C008F5160 /* camera_back_original.jpg */; };
 		B0547F931822AD6D008F5160 /* SlapFlashCamera-sounds.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B0547F921822AD6D008F5160 /* SlapFlashCamera-sounds.m4a */; };
 		B056C3D118114C8D00F7E96D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B056C3D018114C8D00F7E96D /* Foundation.framework */; };
@@ -41,6 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B02CA74518BADB8F0078C2F9 /* exposures_remaining@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exposures_remaining@2x.png"; sourceTree = "<group>"; };
+		B02CA74618BADB8F0078C2F9 /* film_winder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "film_winder@2x.png"; sourceTree = "<group>"; };
+		B02CA74718BADB8F0078C2F9 /* flash_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_button@2x.png"; sourceTree = "<group>"; };
+		B02CA74818BADB8F0078C2F9 /* flash_charged@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_charged@2x.png"; sourceTree = "<group>"; };
+		B02CA74918BADB8F0078C2F9 /* flash_uncharged@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_uncharged@2x.png"; sourceTree = "<group>"; };
+		B02CA74A18BADB8F0078C2F9 /* shutter_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shutter_button@2x.png"; sourceTree = "<group>"; };
 		B0547F8F1822A74C008F5160 /* camera_back_original.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = camera_back_original.jpg; sourceTree = "<group>"; };
 		B0547F921822AD6D008F5160 /* SlapFlashCamera-sounds.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SlapFlashCamera-sounds.m4a"; sourceTree = "<group>"; };
 		B056C3CD18114C8D00F7E96D /* SlapFlashCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlapFlashCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +110,12 @@
 		B0547F8E1822A74C008F5160 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B02CA74518BADB8F0078C2F9 /* exposures_remaining@2x.png */,
+				B02CA74618BADB8F0078C2F9 /* film_winder@2x.png */,
+				B02CA74718BADB8F0078C2F9 /* flash_button@2x.png */,
+				B02CA74818BADB8F0078C2F9 /* flash_charged@2x.png */,
+				B02CA74918BADB8F0078C2F9 /* flash_uncharged@2x.png */,
+				B02CA74A18BADB8F0078C2F9 /* shutter_button@2x.png */,
 				B0547F8F1822A74C008F5160 /* camera_back_original.jpg */,
 			);
 			path = images;
@@ -271,11 +289,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02CA74E18BADB8F0078C2F9 /* flash_charged@2x.png in Resources */,
+				B02CA74B18BADB8F0078C2F9 /* exposures_remaining@2x.png in Resources */,
+				B02CA74D18BADB8F0078C2F9 /* flash_button@2x.png in Resources */,
 				B0547F901822A74C008F5160 /* camera_back_original.jpg in Resources */,
 				B056C3E918114C8D00F7E96D /* Images.xcassets in Resources */,
 				B0DB3A2A18B270EF00739B06 /* flashCharge.aiff in Resources */,
 				B0547F931822AD6D008F5160 /* SlapFlashCamera-sounds.m4a in Resources */,
+				B02CA74F18BADB8F0078C2F9 /* flash_uncharged@2x.png in Resources */,
+				B02CA74C18BADB8F0078C2F9 /* film_winder@2x.png in Resources */,
 				B056C3DB18114C8D00F7E96D /* InfoPlist.strings in Resources */,
+				B02CA75018BADB8F0078C2F9 /* shutter_button@2x.png in Resources */,
 				B056C3E418114C8D00F7E96D /* Main.storyboard in Resources */,
 				B0DB3A2B18B270EF00739B06 /* shutterRelease.aiff in Resources */,
 				B0DB3A2C18B270EF00739B06 /* wind.aiff in Resources */,
