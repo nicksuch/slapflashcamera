@@ -21,6 +21,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 // To check if the film winder is wound
 BOOL isWound;
+BOOL flashCharged;
+int exposureCount = 24;
 
 @interface ViewController () <AVCaptureFileOutputRecordingDelegate>
 
@@ -29,11 +31,14 @@ BOOL isWound;
 @property (nonatomic, weak) IBOutlet UIButton *recordButton;
 @property (nonatomic, weak) IBOutlet UIButton *cameraButton;
 @property (nonatomic, weak) IBOutlet UIButton *stillButton;
+@property (weak, nonatomic) IBOutlet UIImageView *flashChargedLight;
 
 - (IBAction)toggleMovieRecording:(id)sender;
 - (IBAction)changeCamera:(id)sender;
 - (IBAction)snapStillImage:(id)sender;
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer;
+- (IBAction)chargeFlash:(id)sender;
+
 
 // Session management.
 @property (nonatomic) dispatch_queue_t sessionQueue; // Communicate with the session and other session objects on this queue.
@@ -147,7 +152,6 @@ BOOL isWound;
     
 }
 
-
 // New stuff from AVCam
 
 - (BOOL)isSessionRunningAndDeviceAuthorized
@@ -239,7 +243,9 @@ BOOL isWound;
 			[self setStillImageOutput:stillImageOutput];
 		}
 	});
-    
+
+    self.flashChargedLight.image = [UIImage imageNamed:@"flash_uncharged@2x.png"];
+    self.exposureCountLabel.text = [NSString stringWithFormat:@"%d", exposureCount];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -444,14 +450,18 @@ BOOL isWound;
 
 - (IBAction)snapStillImage:(id)sender
 {
-	if (isWound == YES) {
+	if (isWound == YES && exposureCount > 0) {
         dispatch_async([self sessionQueue], ^{
             // Update the orientation on the still image output video connection before capturing.
             [[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:[[(AVCaptureVideoPreviewLayer *)[[self previewView] layer] connection] videoOrientation]];
             
             //TODO: this needs to be changeable by user with FlashReadyIndicator
             // Flash set to Auto for Still Capture
-            [ViewController setFlashMode:AVCaptureFlashModeAuto forDevice:[[self videoDeviceInput] device]];
+            if (flashCharged) {
+                [ViewController setFlashMode:AVCaptureFlashModeOn forDevice:[[self videoDeviceInput] device]];
+            } else {
+            [ViewController setFlashMode:AVCaptureFlashModeOff forDevice:[[self videoDeviceInput] device]];
+            }
             
             // Capture a still image.
             [[self stillImageOutput] captureStillImageAsynchronouslyFromConnection:[[self stillImageOutput] connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
@@ -466,6 +476,10 @@ BOOL isWound;
         });
         isWound = NO;
         self.isWoundLabel.text = @"no";
+        flashCharged = NO;
+        self.flashChargedLight.image = [UIImage imageNamed:@"flash_uncharged@2x.png"];
+        exposureCount --;
+            self.exposureCountLabel.text = [NSString stringWithFormat:@"%d", exposureCount];
         //TODO: Play custom shutter sound
     }
 }
@@ -474,6 +488,13 @@ BOOL isWound;
 {
 	CGPoint devicePoint = [(AVCaptureVideoPreviewLayer *)[[self previewView] layer] captureDevicePointOfInterestForPoint:[gestureRecognizer locationInView:[gestureRecognizer view]]];
 	[self focusWithMode:AVCaptureFocusModeAutoFocus exposeWithMode:AVCaptureExposureModeAutoExpose atDevicePoint:devicePoint monitorSubjectAreaChange:YES];
+}
+
+- (IBAction)chargeFlash:(id)sender {
+    if (!flashCharged) {
+        flashCharged = YES;
+        self.flashChargedLight.image = [UIImage imageNamed:@"flash_charged@2x.png"];
+    }
 }
 
 - (void)subjectAreaDidChange:(NSNotification *)notification

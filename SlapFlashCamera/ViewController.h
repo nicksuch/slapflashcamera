@@ -12,6 +12,7 @@
 @property (strong, nonatomic) UIImagePickerController *picker;
 @property (weak, nonatomic) IBOutlet UILabel *fakeFlashIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *isWoundLabel;
+@property (weak, nonatomic) IBOutlet UILabel *exposureCountLabel;
 
 - (IBAction)makeItFlash:(id)sender;
 - (IBAction)fakeFlashIndicatorOff:(id)sender;
