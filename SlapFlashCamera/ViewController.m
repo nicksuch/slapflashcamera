@@ -64,25 +64,10 @@ int exposureCount = 24;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)makeItFlash:(id)sender {
-    self.fakeFlashIndicator.backgroundColor = [UIColor blackColor];
-    
-    AVCaptureDevice *backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ( [backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn]  )
-    {
-        BOOL success = [backCamera lockForConfiguration:nil];
-        if ( success )
-        {
-            [backCamera setTorchMode:AVCaptureTorchModeOn];
-            [backCamera unlockForConfiguration];
-        }
-    }
-}
 
-- (IBAction)fakeFlashIndicatorOff:(id)sender {
-    self.fakeFlashIndicator.backgroundColor = [UIColor whiteColor];
+- (void)flashOff {
     AVCaptureDevice *backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ( [backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn]  )
+    if ( [backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn])
     {
         BOOL success = [backCamera lockForConfiguration:nil];
         if ( success )
@@ -93,16 +78,11 @@ int exposureCount = 24;
     }
 }
 
-- (IBAction)makeItFlashOffOutside:(id)sender {
-    self.fakeFlashIndicator.backgroundColor = [UIColor whiteColor];
-}
-
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    if (motion == UIEventSubtypeMotionShake && self.fakeFlashIndicator.backgroundColor == [UIColor whiteColor])
+    if (motion == UIEventSubtypeMotionShake && flashCharged)
     {
         // User was shaking the device. Post a notification named "shake."
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shake" object:self];
-        self.fakeFlashIndicator.backgroundColor = [UIColor blackColor];
         
         AVCaptureDevice *backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
         if ( [backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn])
@@ -114,22 +94,8 @@ int exposureCount = 24;
                 [backCamera unlockForConfiguration];
             }
         }
-    } else if (motion == UIEventSubtypeMotionShake && self.fakeFlashIndicator.backgroundColor == [UIColor blackColor])
-    {
-        // User was shaking the device. Post a notification named "shake."
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"shake" object:self];
-        self.fakeFlashIndicator.backgroundColor = [UIColor whiteColor];
-        
-        AVCaptureDevice *backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        if ( [backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn])
-        {
-            BOOL success = [backCamera lockForConfiguration:nil];
-            if ( success )
-            {
-                [backCamera setTorchMode:AVCaptureTorchModeOff];
-                [backCamera unlockForConfiguration];
-            }
-        }
+        NSTimer *timer = [NSTimer timerWithTimeInterval:0.016 target:self selector:@selector(flashOff) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     }
 }
 
@@ -141,10 +107,10 @@ int exposureCount = 24;
 
         // Set up the pieces needed to play a sound.
         SystemSoundID  windSound;
-        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"wind" ofType:@"aiff"];
-        AudioServicesCreateSystemSoundID((CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:soundPath]), &windSound);
+        NSString *windSoundPath = [[NSBundle mainBundle] pathForResource:@"wind" ofType:@"aiff"];
+        AudioServicesCreateSystemSoundID((CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:windSoundPath]), &windSound);
         
-        NSLog(@"%@", soundPath);
+        NSLog(@"%@", windSoundPath);
         
         // Play the sound file.
         AudioServicesPlaySystemSound (windSound);
@@ -479,7 +445,7 @@ int exposureCount = 24;
         flashCharged = NO;
         self.flashChargedLight.image = [UIImage imageNamed:@"flash_uncharged@2x.png"];
         exposureCount --;
-            self.exposureCountLabel.text = [NSString stringWithFormat:@"%d", exposureCount];
+        self.exposureCountLabel.text = [NSString stringWithFormat:@"%d", exposureCount];
         //TODO: Play custom shutter sound
     }
 }
@@ -494,6 +460,16 @@ int exposureCount = 24;
     if (!flashCharged) {
         flashCharged = YES;
         self.flashChargedLight.image = [UIImage imageNamed:@"flash_charged@2x.png"];
+        
+        // Set up the pieces needed to play a sound.
+        SystemSoundID  flashChargeSound;
+        NSString *flashChargeSoundPath = [[NSBundle mainBundle] pathForResource:@"flashCharge" ofType:@"aiff"];
+        AudioServicesCreateSystemSoundID((CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:flashChargeSoundPath]), &flashChargeSound);
+        
+        NSLog(@"%@", flashChargeSoundPath);
+        
+        // Play the sound file.
+        AudioServicesPlaySystemSound (flashChargeSound);
     }
 }
 
