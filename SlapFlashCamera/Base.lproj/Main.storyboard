@@ -113,6 +113,19 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indoor / Outdoor" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="119" translatesAutoresizingMaskIntoConstraints="NO" id="4TW-6f-wt7">
+                                <rect key="frame" x="181" y="269" width="119" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="ACI-V9-5Wi"/>
+                                    <constraint firstAttribute="height" constant="41" id="u3c-nO-AJY"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="119" id="yQ4-Rd-XJR"/>
+                                    <constraint firstAttribute="width" constant="119" id="yQc-eQ-aNC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysJ-Xw-Pi7">
                                 <rect key="frame" x="329" y="53" width="128" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -127,16 +140,31 @@
                                     <action selector="snapStillImage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="obd-A5-tpE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disposable Camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdX-Jw-QkI">
+                                <rect key="frame" x="111" y="248" width="258" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="baK-2A-v3U"/>
+                                    <constraint firstAttribute="width" constant="258" id="wHn-VD-rVS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="28"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.046209314979999999" green="1" blue="0.071141500580000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.18690210459183676" green="0.18690210459183676" blue="0.18690210459183676" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="j6Y-rl-U0P" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="0Bo-rh-Ouv"/>
                             <constraint firstItem="SRs-Wa-few" firstAttribute="top" secondItem="ZZM-yM-ias" secondAttribute="bottom" constant="20" id="4H4-Qe-H7r"/>
                             <constraint firstItem="j6Y-rl-U0P" firstAttribute="top" secondItem="zzz-c8-Jpo" secondAttribute="bottom" constant="19" id="5gs-vq-g9M"/>
+                            <constraint firstItem="uop-PE-vfZ" firstAttribute="top" secondItem="4TW-6f-wt7" secondAttribute="bottom" constant="10" id="9Wu-qb-mQx"/>
                             <constraint firstItem="m5O-Ue-FDf" firstAttribute="top" secondItem="ysJ-Xw-Pi7" secondAttribute="bottom" constant="3" id="AK5-4g-fzf"/>
                             <constraint firstAttribute="trailing" secondItem="ysJ-Xw-Pi7" secondAttribute="trailing" constant="23" id="BSg-jS-XUm"/>
                             <constraint firstItem="ysJ-Xw-Pi7" firstAttribute="top" secondItem="R4q-FN-8Ak" secondAttribute="bottom" constant="53" id="DGl-tF-dQl"/>
                             <constraint firstAttribute="trailing" secondItem="UAj-hD-ezR" secondAttribute="trailing" constant="37" id="IDu-7t-jUb"/>
+                            <constraint firstAttribute="centerX" secondItem="4TW-6f-wt7" secondAttribute="centerX" id="KB2-3b-bof"/>
                             <constraint firstAttribute="centerX" secondItem="v0I-oT-GvQ" secondAttribute="centerX" constant="14.5" id="Kz2-lt-6zv"/>
                             <constraint firstItem="zzz-c8-Jpo" firstAttribute="top" secondItem="R4q-FN-8Ak" secondAttribute="bottom" constant="63" id="TTF-Jg-DnF"/>
                             <constraint firstItem="JP4-hi-xJI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="24" id="UxO-uM-Lwa"/>
@@ -149,6 +177,8 @@
                             <constraint firstItem="ZZM-yM-ias" firstAttribute="top" secondItem="R4q-FN-8Ak" secondAttribute="bottom" constant="64" id="pfM-Yy-F25"/>
                             <constraint firstItem="v0I-oT-GvQ" firstAttribute="top" secondItem="ZZM-yM-ias" secondAttribute="bottom" constant="8" id="qBZ-we-Ukg"/>
                             <constraint firstItem="JP4-hi-xJI" firstAttribute="top" secondItem="R4q-FN-8Ak" secondAttribute="bottom" constant="65" id="qKY-3X-BqZ"/>
+                            <constraint firstAttribute="centerX" secondItem="JdX-Jw-QkI" secondAttribute="centerX" id="sXr-dE-BqF"/>
+                            <constraint firstItem="uop-PE-vfZ" firstAttribute="top" secondItem="JdX-Jw-QkI" secondAttribute="bottom" constant="29" id="xTY-Na-U8E"/>
                             <constraint firstAttribute="trailing" secondItem="m5O-Ue-FDf" secondAttribute="trailing" constant="20" id="zFt-ka-Ibq"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -160,6 +190,7 @@
                     <connections>
                         <outlet property="exposureCountLabel" destination="SRs-Wa-few" id="9kH-3H-EcG"/>
                         <outlet property="flashChargedLight" destination="zzz-c8-Jpo" id="rOQ-jF-xVF"/>
+                        <outlet property="isFlashChargedLabel" destination="JP4-hi-xJI" id="YkQ-bs-xy4"/>
                         <outlet property="isWoundLabel" destination="UAj-hD-ezR" id="Y1k-S5-Ydy"/>
                         <outlet property="previewView" destination="ZZM-yM-ias" id="aue-W9-I02"/>
                     </connections>

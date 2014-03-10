@@ -98,7 +98,7 @@ int exposureCount = 24;
 - (IBAction)windCamera:(id)sender {
     if (!isWound) {
         isWound = YES;
-        self.isWoundLabel.text = @"yes!";
+        self.isWoundLabel.textColor = [UIColor darkGrayColor];
 
         // Set up the pieces needed to play a sound.
         SystemSoundID  windSound;
@@ -281,9 +281,10 @@ int exposureCount = 24;
             }];
         });
         isWound = NO;
-        self.isWoundLabel.text = @"no";
+        self.isWoundLabel.textColor = [UIColor lightGrayColor];
         flashCharged = NO;
         self.flashChargedLight.image = [UIImage imageNamed:@"flash_uncharged@2x.png"];
+        self.isFlashChargedLabel.textColor = [UIColor lightGrayColor];
         exposureCount --;
         self.exposureCountLabel.text = [NSString stringWithFormat:@"%d", exposureCount];
         //TODO: Play custom shutter sound
@@ -294,6 +295,7 @@ int exposureCount = 24;
     if (!flashCharged) {
         flashCharged = YES;
         self.flashChargedLight.image = [UIImage imageNamed:@"flash_charged@2x.png"];
+        self.isFlashChargedLabel.textColor = [UIColor darkGrayColor];
         
         // Set up the pieces needed to play a sound.
         SystemSoundID  flashChargeSound;

@@ -12,6 +12,7 @@
 @property (strong, nonatomic) UIImagePickerController *picker;
 @property (weak, nonatomic) IBOutlet UILabel *isWoundLabel;
 @property (weak, nonatomic) IBOutlet UILabel *exposureCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *isFlashChargedLabel;
 
 - (IBAction)windCamera:(id)sender;
 
