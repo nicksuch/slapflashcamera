@@ -1,5 +1,5 @@
-name: SlapFlashCamera
+name: Disposable Camera
 tagline: A disposable camera app for iOS
-markdown: redcarpet
-pygments: true
+markdown: kramdown
+highlighter: pygments
 permalink: pretty
